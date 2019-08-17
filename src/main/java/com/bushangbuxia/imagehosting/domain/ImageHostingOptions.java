@@ -27,4 +27,8 @@ public class ImageHostingOptions {
 	 * 是否需要校验上传文件是否为图片，若前置业务已校验，可忽略
 	 */
 	private boolean checkImage = false;
+	/**
+	 * 上传超时配置
+	 */
+	private ImageHostingReqConfig reqConfig = new ImageHostingReqConfig();
 }

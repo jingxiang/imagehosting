@@ -13,6 +13,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 
+import com.bushangbuxia.imagehosting.domain.ImageHostingReqConfig;
+
 /**
  * @author kalman03
  * @since 2019-08-17
@@ -27,12 +29,13 @@ public abstract class AbstractInnerImageUploadService implements InnerImageUploa
 	
 	abstract Map<String, String> getHeaderMap();
 
-	public String upload(File imageFile) throws IOException {
+	public String upload(File imageFile,ImageHostingReqConfig reqConfig) throws IOException {
 		String result = null;
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		String url = getUploadUrl();
 		HttpPost httpPost = new HttpPost(url);
-		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(100000).setSocketTimeout(100000).build();
+		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(reqConfig.getConnetionTimeOut())
+				.setSocketTimeout(reqConfig.getSocketTimeout()).build();
 		httpPost.setConfig(requestConfig);
 		httpPost.setEntity(getHttpEntity(imageFile));
 		Map<String, String> headerMap = getHeaderMap();

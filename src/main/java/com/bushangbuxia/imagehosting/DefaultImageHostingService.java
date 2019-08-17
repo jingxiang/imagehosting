@@ -48,7 +48,7 @@ public class DefaultImageHostingService implements ImageHostingService {
 		}
 		for (int hostingPlatform : options.getHostingPlatforms()) {
 			InnerImageUploadService innerImageUploadService = adapterUploadService(hostingPlatform);
-			String absoluteUrl = innerImageUploadService.upload(imageFile);
+			String absoluteUrl = innerImageUploadService.upload(imageFile, options.getReqConfig());
 			if (absoluteUrl != null && !absoluteUrl.isEmpty()) {
 				return success(absoluteUrl, hostingPlatform);
 			}

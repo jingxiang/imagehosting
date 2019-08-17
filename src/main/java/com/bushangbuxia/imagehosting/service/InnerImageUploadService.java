@@ -7,7 +7,9 @@ package com.bushangbuxia.imagehosting.service;
 import java.io.File;
 import java.io.IOException;
 
+import com.bushangbuxia.imagehosting.domain.ImageHostingReqConfig;
+
 public interface InnerImageUploadService {
 
-	String upload(File imageFile)throws IOException;
+	String upload(File imageFile,ImageHostingReqConfig reqConfig)throws IOException;
 }
