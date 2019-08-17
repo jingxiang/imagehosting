@@ -13,8 +13,13 @@ import com.bushangbuxia.imagehosting.domain.ImageHostingOptions;
 import com.bushangbuxia.imagehosting.domain.ImageHostingResponse;
 import com.bushangbuxia.imagehosting.domain.ImageHostingResponse.ImageDO;
 import com.bushangbuxia.imagehosting.service.AliexpressImageUploadService;
+import com.bushangbuxia.imagehosting.service.BytedanceImageUploadService;
+import com.bushangbuxia.imagehosting.service.CcImageUploadService;
 import com.bushangbuxia.imagehosting.service.InnerImageUploadService;
 import com.bushangbuxia.imagehosting.service.JdImageUploadService;
+import com.bushangbuxia.imagehosting.service.JueJinImageUploadService;
+import com.bushangbuxia.imagehosting.service.NeteaseImageUploadService;
+import com.bushangbuxia.imagehosting.service.SouhuImageUploadService;
 import com.bushangbuxia.imagehosting.service.SuNingImageUploadService;
 import com.bushangbuxia.imagehosting.utils.RandomUtils;
 
@@ -63,6 +68,17 @@ public class DefaultImageHostingService implements ImageHostingService {
 			return new AliexpressImageUploadService();
 		} else if (hostingPlatform == ImageHostingPlatform.JD) {
 			return new JdImageUploadService();
+		} else if (hostingPlatform == ImageHostingPlatform.BYTEDANCE) {
+			return new BytedanceImageUploadService();
+		}else if (hostingPlatform == ImageHostingPlatform.SOUHU) {
+			return new SouhuImageUploadService();
+		}else if (hostingPlatform == ImageHostingPlatform.NETEASE) {
+			return new NeteaseImageUploadService();
+		}else if (hostingPlatform == ImageHostingPlatform.CC) {
+			return new CcImageUploadService();
+		}else if (hostingPlatform == ImageHostingPlatform.JUEJIN) {
+			return new JueJinImageUploadService();
+//			return new PrntscrImageUploadService();
 		}
 		return null;
 	}

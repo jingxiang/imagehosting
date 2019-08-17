@@ -22,6 +22,27 @@ public class ImageHostingPlatform {
 	 * 京东，不支持尺寸太小的图片
 	 */
 	public final static int JD = 3;
+	/**
+	 * 今日头条
+	 */
+	public final static int BYTEDANCE = 4;
+	/**
+	 * 搜狐
+	 */
+	public final static int SOUHU = 5;
+	/**
+	 * 网易
+	 */
+	public final static int NETEASE = 6;
+	/**
+	 * CC
+	 */
+	public final static int CC = 7;
+	/**
+	 * 掘金
+	 */
+	public final static int JUEJIN = 8;
 
-	public final static List<Integer> ALL_HOSTING_PLATFORMS = Arrays.asList(SUNING, ALIEXPRESS, JD);
+	public final static List<Integer> ALL_HOSTING_PLATFORMS = Arrays.asList(JUEJIN, CC, NETEASE, SUNING, ALIEXPRESS, JD,
+			BYTEDANCE, SOUHU);
 }

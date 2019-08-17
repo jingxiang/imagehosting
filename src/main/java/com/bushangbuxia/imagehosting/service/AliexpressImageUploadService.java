@@ -11,7 +11,6 @@ import org.apache.http.entity.mime.content.StringBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.bushangbuxia.imagehosting.domain.ImageHostingReqConfig;
 import com.bushangbuxia.imagehosting.utils.RandomUtils;
 
 /**
