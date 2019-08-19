@@ -1,6 +1,6 @@
 ### Introduction
 
-ImageHosting是一个集合多家免费图床的JAVA-SDK实现的项目
+ImageHosting是一个集合多家免费图床的JAVA实现
 
 ### Guides
 
