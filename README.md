@@ -10,7 +10,7 @@ ImageHosting是一个集合多家免费图床的JAVA实现
 <dependency>
     <groupId>com.bushangbuxia</groupId>
 	<artifactId>imagehosting</artifactId>
-    <version>${version}</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
