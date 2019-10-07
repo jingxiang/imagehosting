@@ -4,12 +4,12 @@ ImageHosting是一个集合多家免费图床的JAVA实现
 
 ### Guides
 
-1、添加依赖（需自行打包）
+1、添加依赖
 
 ```
 <dependency>
     <groupId>com.bushangbuxia</groupId>
-	<artifactId>imagehosting</artifactId>
+    <artifactId>imagehosting</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
@@ -18,17 +18,17 @@ ImageHosting是一个集合多家免费图床的JAVA实现
 
 ```java
 public static void main(String[] args) {
-		try {
-			ImageHostingService imageHostingService = new DefaultImageHostingService();
-			File imageFile = new File("C:\\5E44465978FB976E3597D3110CB76AB9.png");
-			ImageHostingOptions options = new ImageHostingOptions();
-			options.setHostingPlatforms(Arrays.asList(ImageHostingPlatform.JD));
-			ImageHostingResponse response = imageHostingService.upload(imageFile, options);
-			System.out.println(JSON.toJSONString(response));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	try {
+		ImageHostingService imageHostingService = new DefaultImageHostingService();
+		File imageFile = new File("C:\\5E44465978FB976E3597D3110CB76AB9.png");
+		ImageHostingOptions options = new ImageHostingOptions();
+		options.setHostingPlatforms(Arrays.asList(ImageHostingPlatform.JD));
+		ImageHostingResponse response = imageHostingService.upload(imageFile, options);
+		System.out.println(JSON.toJSONString(response));
+	} catch (Exception e) {
+		e.printStackTrace();
 	}
+}
 ```
 
 ### Support Site
