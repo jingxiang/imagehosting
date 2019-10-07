@@ -8,6 +8,28 @@
 
 	<version>1.0.0</version>
 	<name>imagehosting</name>
+	<description>ImageHosting是一个集合多家免费图床的JAVA实现</description>
+	<url>https://github.com/jingxiang/imagehosting</url>
+
+	<scm>
+		<url>https://github.com/jingxiang/imagehosting.git</url>
+	</scm>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://github.com/jingxiang/imagehosting/blob/master/LICENSE</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>kalman03</name>
+			<email>kalman03@163.com</email>
+			<organization>bushangbuxia</organization>
+			<organizationUrl>http://www.bushangbuxia.com</organizationUrl>
+		</developer>
+	</developers>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -52,10 +74,6 @@
 		</repository>
 	</distributionManagement>
 
-	<scm>
-		<url>https://github.com/jingxiang/imagehosting.git</url>
-	</scm>
-	
 	<build>
 		<finalName>${project.name}</finalName>
 		<plugins>
@@ -78,7 +96,21 @@
 				</configuration>
 				<executions>
 					<execution>
-						<phase>compile</phase>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
 						<goals>
 							<goal>jar</goal>
 						</goals>
@@ -98,6 +130,17 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>sonatype_release</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
