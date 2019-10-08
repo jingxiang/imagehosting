@@ -13,6 +13,7 @@ ImageHosting是一个集合多家免费图床的JAVA实现
     <version>1.0.0</version>
 </dependency>
 ```
+最新版本：[https://search.maven.org/artifact/com.bushangbuxia/imagehosting](https://search.maven.org/artifact/com.bushangbuxia/imagehosting)
 
 2、使用案例
 
