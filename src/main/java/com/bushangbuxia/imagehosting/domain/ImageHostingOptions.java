@@ -28,10 +28,6 @@ public class ImageHostingOptions {
 	 */
 	private boolean checkImage = false;
 	/**
-	 * 是否在 {@link #hostingPlatforms}失败的时候继续下一个平台（仅该参数为多个列表有效）
-	 */
-	private boolean nextPlatformWhenFailed = false;
-	/**
 	 * 上传超时配置
 	 */
 	private ImageHostingReqConfig reqConfig = new ImageHostingReqConfig();

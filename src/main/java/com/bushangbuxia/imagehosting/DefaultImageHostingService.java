@@ -63,9 +63,6 @@ public class DefaultImageHostingService implements ImageHostingService {
 					return success(absoluteUrl, hostingPlatform);
 				}
 			} catch (Exception e) {
-				if (!options.isNextPlatformWhenFailed()) {
-					throw new IOException(e);
-				}
 			}
 		}
 		return error("上传图片失败 ");
