@@ -42,7 +42,23 @@ public class ImageHostingPlatform {
 	 * 掘金
 	 */
 	public final static int JUEJIN = 8;
+	/**
+	 * B站
+	 */
+	public final static int BILIBILI = 9;
+	/**
+	 * catbox.moe
+	 */
+	public final static int CATBOX = 10;
+	/**
+	 * img.vim-cn.com
+	 */
+	public final static int VIM_CN = 11;
+	/**
+	 * img.vim-cn.com
+	 */
+	public final static int FREE_IMAGE_HOST = 12;
 
 	public final static List<Integer> ALL_HOSTING_PLATFORMS = Arrays.asList(JUEJIN, CC, NETEASE, SUNING, ALIEXPRESS, JD,
-			BYTEDANCE, SOUHU);
+			BYTEDANCE, SOUHU, BILIBILI, CATBOX, VIM_CN, FREE_IMAGE_HOST);
 }

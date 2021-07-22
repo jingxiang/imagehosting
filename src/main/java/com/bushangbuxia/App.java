@@ -17,9 +17,9 @@ public class App {
 	public static void main(String[] args) {
 		try {
 			ImageHostingService imageHostingService = new DefaultImageHostingService();
-			File imageFile = new File("C:\\Users\\kalman03\\Desktop\\商品图片\\5E44465978FB976E3597D3110CB76AB9.png");
+			File imageFile = new File("C:\\Users\\kalman\\Desktop\\微信截图_20210719224153.png");
 			ImageHostingOptions options = new ImageHostingOptions();
-			options.setHostingPlatforms(Arrays.asList(ImageHostingPlatform.JUEJIN));
+			options.setHostingPlatforms(Arrays.asList(ImageHostingPlatform.FREE_IMAGE_HOST));
 			ImageHostingResponse response = imageHostingService.upload(imageFile, options);
 			System.out.println(JSON.toJSONString(response));
 		} catch (Exception e) {

@@ -13,14 +13,18 @@ import com.bushangbuxia.imagehosting.domain.ImageHostingOptions;
 import com.bushangbuxia.imagehosting.domain.ImageHostingResponse;
 import com.bushangbuxia.imagehosting.domain.ImageHostingResponse.ImageDO;
 import com.bushangbuxia.imagehosting.service.AliexpressImageUploadService;
+import com.bushangbuxia.imagehosting.service.BilibiliUploadService;
 import com.bushangbuxia.imagehosting.service.BytedanceImageUploadService;
+import com.bushangbuxia.imagehosting.service.CatBoxMoreService;
 import com.bushangbuxia.imagehosting.service.CcImageUploadService;
+import com.bushangbuxia.imagehosting.service.FreeImageHostImageService;
 import com.bushangbuxia.imagehosting.service.InnerImageUploadService;
 import com.bushangbuxia.imagehosting.service.JdImageUploadService;
 import com.bushangbuxia.imagehosting.service.JueJinImageUploadService;
 import com.bushangbuxia.imagehosting.service.NeteaseImageUploadService;
 import com.bushangbuxia.imagehosting.service.SouhuImageUploadService;
 import com.bushangbuxia.imagehosting.service.SuNingImageUploadService;
+import com.bushangbuxia.imagehosting.service.VimCNImageService;
 import com.bushangbuxia.imagehosting.utils.RandomUtils;
 
 /**
@@ -52,10 +56,16 @@ public class DefaultImageHostingService implements ImageHostingService {
 			return error("上传的图片损坏或非图片文件");
 		}
 		for (int hostingPlatform : options.getHostingPlatforms()) {
-			InnerImageUploadService innerImageUploadService = adapterUploadService(hostingPlatform);
-			String absoluteUrl = innerImageUploadService.upload(imageFile, options.getReqConfig());
-			if (absoluteUrl != null && !absoluteUrl.isEmpty()) {
-				return success(absoluteUrl, hostingPlatform);
+			try {
+				InnerImageUploadService innerImageUploadService = adapterUploadService(hostingPlatform);
+				String absoluteUrl = innerImageUploadService.upload(imageFile, options.getReqConfig());
+				if (absoluteUrl != null && !absoluteUrl.isEmpty()) {
+					return success(absoluteUrl, hostingPlatform);
+				}
+			} catch (Exception e) {
+				if (!options.isNextPlatformWhenFailed()) {
+					throw new IOException(e);
+				}
 			}
 		}
 		return error("上传图片失败 ");
@@ -70,15 +80,23 @@ public class DefaultImageHostingService implements ImageHostingService {
 			return new JdImageUploadService();
 		} else if (hostingPlatform == ImageHostingPlatform.BYTEDANCE) {
 			return new BytedanceImageUploadService();
-		}else if (hostingPlatform == ImageHostingPlatform.SOUHU) {
+		} else if (hostingPlatform == ImageHostingPlatform.SOUHU) {
 			return new SouhuImageUploadService();
-		}else if (hostingPlatform == ImageHostingPlatform.NETEASE) {
+		} else if (hostingPlatform == ImageHostingPlatform.NETEASE) {
 			return new NeteaseImageUploadService();
-		}else if (hostingPlatform == ImageHostingPlatform.CC) {
+		} else if (hostingPlatform == ImageHostingPlatform.CC) {
 			return new CcImageUploadService();
-		}else if (hostingPlatform == ImageHostingPlatform.JUEJIN) {
+		} else if (hostingPlatform == ImageHostingPlatform.JUEJIN) {
 			return new JueJinImageUploadService();
 //			return new PrntscrImageUploadService();
+		} else if (hostingPlatform == ImageHostingPlatform.BILIBILI) {
+			return new BilibiliUploadService();
+		} else if (hostingPlatform == ImageHostingPlatform.CATBOX) {
+			return new CatBoxMoreService();
+		} else if (hostingPlatform == ImageHostingPlatform.VIM_CN) {
+			return new VimCNImageService();
+		} else if (hostingPlatform == ImageHostingPlatform.FREE_IMAGE_HOST) {
+			return new FreeImageHostImageService();
 		}
 		return null;
 	}
